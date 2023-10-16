@@ -13,7 +13,7 @@ public class PaddleManager {
         courtList = new ArrayList<>();
     }
 
-    public void addCustomer(String name, String surname, NIF nif){
+    public void addCustomer(String name, String surname, String nif){
         customerList.add(new Customer(name, surname, nif));
     }
     public void addCourt(String name, int price, CourtType type){

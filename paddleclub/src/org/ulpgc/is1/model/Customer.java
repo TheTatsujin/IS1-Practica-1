@@ -9,10 +9,10 @@ public class Customer {
     private NIF nif;
     private List<Reservation> reservations;
 
-    public Customer(String name, String surname, NIF nif) {
+    public Customer(String name, String surname, String nif) {
         this.name = name;
         this.surname = surname;
-        this.nif = nif;
+        this.nif = new NIF(nif);
         this.reservations = new ArrayList<>();
     }
 
