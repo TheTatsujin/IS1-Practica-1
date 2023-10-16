@@ -8,11 +8,16 @@ public class Reservation {
     private static int NEXT_ID = 0;
     private Date date;
     private final int id;
+    private Court court;
+    private Customer customer;
     private List<Extra> extras;
-    public Reservation(Date date, int id) {
+    public Reservation(Customer customer, Court court, Date date) {
+        this.customer = customer;
+        this.court = court;
         NEXT_ID++;
+
         this.date = date;
-        this.id = id;
+        this.id = NEXT_ID;
         this.extras = new ArrayList<>();
     }
     public void addExtra(Extra extra){
