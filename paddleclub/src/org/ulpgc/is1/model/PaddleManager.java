@@ -52,4 +52,11 @@ public class PaddleManager {
         return new Reservation(client, court, date);
     }
 
+    public List<Customer> getCustomers(){
+        return new ArrayList<>(this.customerList);
+    }
+
+    public List<Court> getCourts(){
+        return new ArrayList<>(this.courtList);
+    }
 }

@@ -54,11 +54,10 @@ public class NIF {
     }
 
     public void setNumber(String newNumber) {
-        String old = this.number;
         this.number = newNumber;
 
         if (!isValid()){
-            this.number = old;
+            this.number = "XXXX";
         }
     }
 
