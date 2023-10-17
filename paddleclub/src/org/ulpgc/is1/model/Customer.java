@@ -43,6 +43,14 @@ public class Customer {
         return this.reservations.get(index);
     }
 
+    public List<Reservation> getReservations(){
+        return new ArrayList<>(this.reservations);
+    }
+
+    public void removeReservation(int index){
+        this.reservations.remove(index);
+    }
+
     public int reservationCount(){
         return this.reservations.size();
     }

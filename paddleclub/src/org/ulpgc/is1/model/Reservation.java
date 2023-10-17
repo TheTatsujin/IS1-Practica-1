@@ -29,10 +29,31 @@ public class Reservation {
     public void removeExtra(Extra extra){
         this.extras.remove(extra);
     }
+
+
+
+
+
     public int price(){
         int resultado = 0;
         for (Extra i: this.extras) {
             resultado += i.getPrice();
         } return resultado;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Court getCourt() {
+        return court;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getId() {
+        return id;
     }
 }
