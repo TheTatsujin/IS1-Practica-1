@@ -14,10 +14,10 @@ public class Reservation {
     public Reservation(Customer customer, Court court, Date date) {
         this.customer = customer;
         this.court = court;
-        NEXT_ID++;
+
 
         this.date = date;
-        this.id = NEXT_ID;
+        this.id = ++NEXT_ID;
         this.extras = new ArrayList<>();
     }
     public void addExtra(Extra extra){

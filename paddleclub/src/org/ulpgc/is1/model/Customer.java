@@ -36,8 +36,8 @@ public class Customer {
         return nif;
     }
 
-    public void setNif(NIF nif) {
-        this.nif = nif;
+    public void setNif(String nif) {
+        this.nif.setNumber(nif);
     }
     public Reservation getReservation(int index){
         return this.reservations.get(index);
