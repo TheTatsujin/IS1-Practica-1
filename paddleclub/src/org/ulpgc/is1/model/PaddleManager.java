@@ -16,14 +16,17 @@ public class PaddleManager {
     public void addCustomer(String name, String surname, String nif){
         customerList.add(new Customer(name, surname, nif));
     }
+    public void addCustomer(String name, String surname, String nif, int points, String street, int number, int postalCode, String city){
+        customerList.add(new Member(name, surname, nif, points, street, number, postalCode, city));
+    }
     public void addCourt(String name, int price, CourtType type){
         courtList.add(new Court(name, price, type));
     }
     public Customer getCustomer(int indx){
-         return this.customerList.get(indx);
+         return this.customerList.get(indx - 1);
     }
     public Court getCourt(int indx){
-        return this.courtList.get(indx);
+        return this.courtList.get(indx - 1);
     }
     public Customer getCustomer(String customerName){
         for (Customer i: customerList){
@@ -40,16 +43,35 @@ public class PaddleManager {
             }
         }return null;
     }
-    public Reservation reserve(String customerName, String courtName, Date date){
+    public void reserve(String customerName, String courtName, Date date){
         Customer client = this.getCustomer(customerName);
         Court court = this.getCourt(courtName);
-        return new Reservation(client, court, date);
+        Reservation r = new Reservation(client, court, date);
+        court.addReservation(r);
+        client.addReservation(r);
     }
 
-    public Reservation reserve(int customerIndex, int courtIndex, Date date){
+    public void reserve(int customerIndex, int courtIndex, Date date){
         Customer client = this.getCustomer(customerIndex);
         Court court = this.getCourt(courtIndex);
-        return new Reservation(client, court, date);
+        Reservation r = new Reservation(client, court, date);
+        court.addReservation(r);
+        client.addReservation(r);
     }
 
+    public List<Customer> getCustomers(){
+        return new ArrayList<>(this.customerList);
+    }
+
+    public List<Court> getCourts(){
+        return new ArrayList<>(this.courtList);
+    }
+
+    public void removeCustomer(int index){
+        this.customerList.remove(index - 1);
+    }
+
+    public void removeCourt(int index){
+        this.courtList.remove(index - 1);
+    }
 }

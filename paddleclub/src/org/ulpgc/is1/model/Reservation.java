@@ -14,10 +14,10 @@ public class Reservation {
     public Reservation(Customer customer, Court court, Date date) {
         this.customer = customer;
         this.court = court;
-        NEXT_ID++;
+
 
         this.date = date;
-        this.id = NEXT_ID;
+        this.id = ++NEXT_ID;
         this.extras = new ArrayList<>();
     }
     public void addExtra(Extra extra){
@@ -29,10 +29,31 @@ public class Reservation {
     public void removeExtra(Extra extra){
         this.extras.remove(extra);
     }
+
+
+
+
+
     public int price(){
         int resultado = 0;
         for (Extra i: this.extras) {
             resultado += i.getPrice();
         } return resultado;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Court getCourt() {
+        return court;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getId() {
+        return id;
     }
 }

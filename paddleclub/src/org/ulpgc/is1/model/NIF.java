@@ -8,6 +8,11 @@ public class NIF {
         this.setNumber(number);
     }
 
+    @Override
+    public String toString(){
+        return number;
+    }
+
     public boolean isValid() {
         String nif = this.number;
         // Verifica que el NIF tenga la longitud adecuada
@@ -49,11 +54,10 @@ public class NIF {
     }
 
     public void setNumber(String newNumber) {
-        String old = this.number;
         this.number = newNumber;
 
         if (!isValid()){
-            this.number = old;
+            this.number = "XXXX";
         }
     }
 
