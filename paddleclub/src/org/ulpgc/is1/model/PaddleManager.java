@@ -59,4 +59,12 @@ public class PaddleManager {
     public List<Court> getCourts(){
         return new ArrayList<>(this.courtList);
     }
+
+    public void removeCustomer(int index){
+        this.customerList.remove(index);
+    }
+
+    public void removeCourt(int index){
+        this.courtList.remove(index);
+    }
 }
