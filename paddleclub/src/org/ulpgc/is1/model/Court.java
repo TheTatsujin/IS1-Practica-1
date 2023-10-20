@@ -51,7 +51,9 @@ public class Court {
     }
 
     public void addReservation(Reservation newReservation){
-        this.reservations.add(newReservation);
+        if (!this.reservations.contains(newReservation)){
+            this.reservations.add(newReservation);
+        }
     }
 
 

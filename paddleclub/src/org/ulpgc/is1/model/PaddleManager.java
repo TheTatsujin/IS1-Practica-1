@@ -14,19 +14,26 @@ public class PaddleManager {
     }
 
     public void addCustomer(String name, String surname, String nif){
-        customerList.add(new Customer(name, surname, nif));
+        if (this.getCustomer(name+" "+surname) == null){
+            customerList.add(new Customer(name, surname, nif));
+        }
     }
-    public void addCustomer(String name, String surname, String nif, int points, String street, int number, int postalCode, String city){
-        customerList.add(new Member(name, surname, nif, points, street, number, postalCode, city));
+    public void addMember(String name, String surname, String nif, int points, String street, int number, int postalCode, String city) {
+        if (this.getCustomer(name + " " + surname) == null) {
+            customerList.add(new Member(name, surname, nif, points, street, number, postalCode, city));
+
+        }
     }
     public void addCourt(String name, int price, CourtType type){
-        courtList.add(new Court(name, price, type));
+        if (this.getCourt(name) == null) {
+            courtList.add(new Court(name, price, type));
+        }
     }
-    public Customer getCustomer(int indx){
-         return this.customerList.get(indx - 1);
+    public Customer getCustomer(int index){
+         return this.customerList.get(index - 1);
     }
-    public Court getCourt(int indx){
-        return this.courtList.get(indx - 1);
+    public Court getCourt(int index){
+        return this.courtList.get(index - 1);
     }
     public Customer getCustomer(String customerName){
         for (Customer i: customerList){

@@ -6,9 +6,8 @@ import java.util.Date;
 
 public class Main {
     public static void init(PaddleManager manager){
-        manager.addCustomer("Juan", "Pérez", "12345678Z", 100, "Calle Mayor", 10, 28001, "Madrid");
+        manager.addMember("Juan", "Pérez", "54117087L", 100, "Calle Mayor", 10, 28001, "Madrid");
         manager.addCustomer("Ana", "García", "12SD34TT4");
-
 
         manager.addCourt("Court1", 50, CourtType.FastCourt);
         manager.addCourt("Court2", 35, CourtType.SlowCourt);
