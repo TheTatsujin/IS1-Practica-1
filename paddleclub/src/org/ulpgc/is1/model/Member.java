@@ -19,7 +19,12 @@ public class Member extends Customer{
     }
 
     public Address getAddress() {
-        return address;
+        return new Address(
+                this.address.getStreet(),
+                this.address.getNumber(),
+                this.address.getPostalCode(),
+                this.address.getCity()
+        );
     }
 
     public void setAddress(String street, int number, int postalCode, String city) {
