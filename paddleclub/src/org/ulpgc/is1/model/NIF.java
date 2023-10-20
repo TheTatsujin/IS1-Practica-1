@@ -12,45 +12,43 @@ public class NIF {
     public String toString(){
         return number;
     }
-
     public boolean isValid() {
-        String nif = this.number;
-        // Verifica que el NIF tenga la longitud adecuada
-        if (nif.length() != 9) {
+        String dni = this.number;
+        // Check if the DNI has the correct length (9 characters)
+        if (dni.length() != 9) {
             return false;
         }
 
-        // Extrae la primera letra (tipo de NIF) y los números
-        char firstLetter = nif.charAt(0);
-        String numbersPart = nif.substring(0, 7);
+        // Extract the first 8 digits
+        String digitsPart = dni.substring(0, 8);
 
-        // Verifica que la primera letra sea válida
-        if (!isValidNIFType(firstLetter)) {
+        // Extract the letter
+        char letter = dni.charAt(8);
+
+        try {
+            // Parse the first 8 digits as an integer
+            int dniDigits = Integer.parseInt(digitsPart);
+
+            // Calculate the expected letter based on the 8 digits
+            char expectedLetter = calculateDNILetter(dniDigits);
+
+            // Check if the calculated letter matches the provided letter
+            return expectedLetter == letter;
+        } catch (NumberFormatException e) {
+            // If parsing the first 8 digits as an integer fails, the DNI is invalid
             return false;
         }
-
-        // Verifica que la última letra sea la letra de control correcta
-        char controlLetter = calculateNIFControlLetter(numbersPart);
-        return controlLetter == nif.charAt(8);
     }
 
-    private static boolean isValidNIFType(char firstLetter) {
-        // Verifica que la primera letra sea una letra válida (X, Y, Z o letra del alfabeto)
-        return Character.isLetter(firstLetter) && (firstLetter == 'X' || firstLetter == 'Y' || firstLetter == 'Z' || Character.isAlphabetic(firstLetter));
-    }
+    private static char calculateDNILetter(int dniDigits) {
+        // Array of letters used for DNI validation
+        char[] dniLetters = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
 
-    private static char calculateNIFControlLetter(String numbersPart) {
-        // Convierte los números a una secuencia de dígitos
-        int numericPart = Integer.parseInt(numbersPart);
+        // Calculate the index for the letter using the modulo operation
+        int index = dniDigits % 23;
 
-        // Calcula el índice de la letra de control
-        int controlIndex = numericPart % 23;
-
-        // Lista de letras de control válidas
-        String validControlLetters = "TRWAGMYFPDXBNJZSQVHLCKE";
-
-        // Obtiene la letra de control correspondiente al índice
-        return validControlLetters.charAt(controlIndex);
+        // Return the corresponding letter from the array
+        return dniLetters[index];
     }
 
     public void setNumber(String newNumber) {

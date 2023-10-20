@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 public class PaddleManager {
-    private List<Customer> customerList;
-    private List<Court> courtList;
+    private final List<Customer> customerList;
+    private final List<Court> courtList;
 
     public PaddleManager(){
         customerList = new ArrayList<>();
