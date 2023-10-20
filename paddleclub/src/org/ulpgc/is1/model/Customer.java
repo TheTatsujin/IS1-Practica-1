@@ -32,8 +32,8 @@ public class Customer {
         this.surname = surname;
     }
 
-    public NIF getNif() {
-        return nif;
+    public String getNif() {
+        return this.nif.getNumber();
     }
 
     public void setNif(String nif) {
@@ -56,6 +56,8 @@ public class Customer {
     }
 
     public void addReservation(Reservation newReservation){
-        this.reservations.add(newReservation);
+        if (!this.reservations.contains(newReservation)){
+            this.reservations.add(newReservation);
+        }
     }
 }

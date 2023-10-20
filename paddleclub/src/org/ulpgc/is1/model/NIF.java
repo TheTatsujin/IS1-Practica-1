@@ -22,7 +22,7 @@ public class NIF {
 
         // Extrae la primera letra (tipo de NIF) y los números
         char firstLetter = nif.charAt(0);
-        String numbersPart = nif.substring(0, 8);
+        String numbersPart = nif.substring(0, 7);
 
         // Verifica que la primera letra sea válida
         if (!isValidNIFType(firstLetter)) {

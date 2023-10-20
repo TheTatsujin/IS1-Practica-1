@@ -21,17 +21,25 @@ public class Reservation {
         this.extras = new ArrayList<>();
     }
     public void addExtra(Extra extra){
-        this.extras.add(extra);
+        if (!this.extras.contains(extra)){
+            this.extras.add(extra);
+        }
     }
-    public void removeExtra(int indx){
-        this.extras.remove(indx);
+
+    public void removeExtra(int index){
+        this.extras.remove(index);
     }
     public void removeExtra(Extra extra){
         this.extras.remove(extra);
     }
 
+    public Extra getExtra(int index){
+        return extras.get(index);
+    }
 
-
+    public List<Extra> getExtras(){
+        return new ArrayList<>(this.extras);
+    }
 
 
     public int price(){
